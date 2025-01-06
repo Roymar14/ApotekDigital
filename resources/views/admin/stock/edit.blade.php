@@ -24,8 +24,8 @@
               <input type="text" name="kandungan" class="form-control" id="kandungan" value="{{ old('kandungan', $barang->kandungan) }}" required>
             </div>
             <div class="form-group">
-              <label for="jumlah">Jumlah</label>
-              <input type="number" name="jumlah" class="form-control" id="jumlah" value="{{ old('jumlah', $barang->jumlah) }}" required>
+              <label for="stock">Jumlah</label>
+              <input type="number" name="stock" class="form-control" id="stock" value="{{ old('stock', $barang->stock) }}" required>
             </div>
             <div class="form-group">
               <label for="price">Price</label>

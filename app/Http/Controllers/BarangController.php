@@ -48,28 +48,39 @@ class BarangController extends Controller
 
     }
     public function edit($id)
-{
-    $barang = Barang::findOrFail($id);
-    return view('admin.stock.edit', compact('barang'));
-}
+    {
+        // Ambil data barang berdasarkan ID
+        $barang = Barang::findOrFail($id);
 
-public function update(Request $request, $id)
-{
-    // Validasi data
-    $validatedData = $request->validate([
-        'barang' => 'required|string|max:255',
-        'kandungan' => 'required|string|max:255',
-        'stock' => 'required|integer|min:0',
-        'price' => 'required|numeric|min:0',
-    ]);
+        // Menampilkan halaman edit dengan data barang
+        return view('admin.stock.edit', compact('barang'));
+    }
 
-    // Cari barang berdasarkan ID dan update
-    $barang = Barang::findOrFail($id);
-    $barang->update($validatedData);
+    // Memperbarui data barang
+    public function update(Request $request, $id)
+    {
+        // Validasi data yang diterima dari form
+        $request->validate([
+            'barang' => 'required|string|max:255',
+            'kandungan' => 'required|string|max:255',
+            'stock' => 'required|integer|min:0',
+            'price' => 'required|numeric|min:0',
+        ]);
 
-    // Redirect ke daftar barang dengan pesan sukses
-    return redirect()->route('stock')->with('success', 'Barang berhasil diperbarui.');
-}
+        // Ambil data barang berdasarkan ID
+        $barang = Barang::findOrFail($id);
+
+        // Update data barang
+        $barang->update([
+            'barang' => $request->barang,
+            'kandungan' => $request->kandungan,
+            'stock' => $request->stock,
+            'price' => $request->price,
+        ]);
+
+        // Redirect kembali ke halaman daftar barang dengan pesan sukses
+        return redirect()->route('stock')->with('success', 'Barang berhasil diperbarui!');
+    }
 function createbarangMasuk()  {
     $user = User::get();
 
