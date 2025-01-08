@@ -7,7 +7,7 @@
         </div>
         
       </a>
-      <a href="https://www.instagram.com/roymar.14?igsh=MTNneDdyMWJyM3VzMA==" class="simple-text logo-normal">
+      <a href="http://www.creative-tim.com" class="simple-text logo-normal">
         CEO Apotek Digital
       </a>
     </div>
